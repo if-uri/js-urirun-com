@@ -34,8 +34,33 @@ That's it. The script self-initializes and starts sending events.
 | `data-forms`     | `1`                                  | Auto-track form submits                   |
 | `data-spa`       | `1`                                  | Auto-track SPA route changes              |
 | `data-outbound`  | `1`                                  | Track clicks to other domains as URLs     |
+| `data-debug`     | auto                                 | Log every event to the browser console    |
 
 Set any to `0` to disable, e.g. `data-spa="0"`.
+
+### Console logging / debug
+
+With debug on, the tracker logs init plus every event it sends to
+`console.log` (prefixed `urirun`), including the event type, payload and the
+full URI, and whether it went via `sendBeacon` or the `<img>` fallback:
+
+```
+urirun zainicjalizowano { site: 'demo', endpoint: '…/collect.php', auto: {…} }
+urirun → pageview (beacon) { data: { l: 'Home' }, uri: 'https://web.urirun.com/collect.php?s=demo&e=pageview&…' }
+urirun → click (beacon)    { data: { l: 'Buy now', v: '' }, uri: '…&e=click&…' }
+```
+
+Debug turns on automatically on `localhost`/`127.0.0.1`, on `file://`, or when
+the page URL contains `?urirun-debug`. Force it with `data-debug="1"` (or off
+with `data-debug="0"`), or toggle at runtime:
+
+```js
+window.urirun.debug(true);   // start logging
+window.urirun.debug(false);  // stop
+```
+
+In production (a normal domain, no flag) logging is **silent** by default so the
+tracker never clutters the host page's console.
 
 ## Auto-tracked events
 

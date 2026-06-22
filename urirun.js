@@ -40,6 +40,16 @@
     return (v === null || v === undefined || v === '') ? fallback : v;
   }
 
+  // Debug włączony gdy: data-debug="1", ?urirun-debug w URL, albo na localhost.
+  function debugDefault() {
+    try {
+      if (/[?&]urirun-debug\b/.test(location.search)) return true;
+      if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return true;
+      if (location.protocol === 'file:') return true;
+    } catch (e) {}
+    return false;
+  }
+
   var cfg = {
     site:     attr('site', location.hostname),
     endpoint: attr('endpoint', 'https://web.urirun.com/collect.php'),
@@ -47,8 +57,18 @@
     load:     attr('load', '1') !== '0',     // auto-track pageview
     spa:      attr('spa', '1') !== '0',      // auto-track nawigacji SPA
     forms:    attr('forms', '1') !== '0',    // auto-track wysyłki formularzy
-    outbound: attr('outbound', '1') !== '0'  // auto-track linków wychodzących
+    outbound: attr('outbound', '1') !== '0', // auto-track linków wychodzących
+    debug:    attr('debug', null) !== null ? attr('debug', '0') !== '0' : debugDefault()
   };
+
+  // --- logowanie do konsoli (tylko w trybie debug) -------------------------
+  var STYLE = 'color:#04121c;background:#4cc2ff;padding:1px 5px;border-radius:3px';
+  function log() {
+    if (!cfg.debug || typeof console === 'undefined') return;
+    var args = Array.prototype.slice.call(arguments);
+    try { console.log('%curirun', STYLE, args.shift(), args.length ? args : ''); }
+    catch (e) { try { console.log.apply(console, ['[urirun]'].concat(args)); } catch (e2) {} }
+  }
 
   // --- budowa i wysyłka URI ------------------------------------------------
   function buildURI(type, data) {
@@ -74,7 +94,10 @@
     // 1) sendBeacon — przetrwa nawigację i zamknięcie karty
     if (navigator.sendBeacon) {
       try {
-        if (navigator.sendBeacon(uri)) return;
+        if (navigator.sendBeacon(uri)) {
+          log('→ ' + type + ' (beacon)', { data: data || {}, uri: uri });
+          return;
+        }
       } catch (e) { /* fallback */ }
     }
     // 2) fallback: obraz 1x1 (czysty URI GET)
@@ -82,7 +105,11 @@
       var img = new Image();
       img.referrerPolicy = 'no-referrer-when-downgrade';
       img.src = uri;
-    } catch (e) { /* cisza — tracker nigdy nie psuje strony */ }
+      log('→ ' + type + ' (img)', { data: data || {}, uri: uri });
+    } catch (e) {
+      // cisza dla strony, ale w debugu pokaż błąd
+      log('✗ ' + type + ' — wysyłka nieudana', { error: String(e), uri: uri });
+    }
   }
 
   // --- helpery -------------------------------------------------------------
@@ -106,6 +133,11 @@
     try { return new URL(href, location.href).hostname === location.hostname; }
     catch (e) { return true; }
   }
+
+  log('zainicjalizowano', {
+    site: cfg.site, endpoint: cfg.endpoint,
+    auto: { load: cfg.load, clicks: cfg.clicks, forms: cfg.forms, spa: cfg.spa, outbound: cfg.outbound }
+  });
 
   // --- auto: pageview ------------------------------------------------------
   if (cfg.load) {
@@ -191,6 +223,8 @@
       }
       send(String(name || 'event'), payload);
     },
-    config: cfg
+    config: cfg,
+    /** Włącz/wyłącz logowanie do konsoli w trakcie działania. */
+    debug: function (on) { cfg.debug = on !== false; return cfg.debug; }
   };
 })(window, document);

@@ -16,7 +16,7 @@
 </style>
 
 <!-- W produkcji wystarczy ta jedna linia w <head> obserwowanej strony: -->
-<script src="urirun.js" data-site="demo" data-endpoint="https://web.urirun.com/collect.php" defer></script>
+<script src="urirun.js" data-site="demo" data-endpoint="https://web.urirun.com/collect.php" data-debug="1" defer></script>
 </head>
 <body>
   <h1>js.urirun.com — demo</h1>
@@ -42,7 +42,8 @@
     <button type="submit">Zapisz (submit)</button>
   </form>
 
-  <p><small>Otwórz konsolę sieci (Network) i filtruj po <code>collect.php</code>, aby podejrzeć wysyłane URI.</small></p>
+  <p><small>Otwórz <strong>konsolę (Console)</strong> — przy <code>data-debug="1"</code> każde zdarzenie loguje się z prefiksem
+     <code>urirun</code>. W zakładce <strong>Network</strong> filtruj po <code>collect.php</code>, aby zobaczyć wysyłane URI.</small></p>
 
   <script>
     document.getElementById('manual').addEventListener('click', function () {
