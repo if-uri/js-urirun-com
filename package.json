@@ -1,0 +1,13 @@
+{
+  "name": "js-urirun-com",
+  "version": "0.1.0",
+  "description": "js.urirun.com — lekki tracker zdarzeń wysyłający zdarzenia strony jako URI do web.urirun.com",
+  "license": "MIT",
+  "scripts": {
+    "build": "terser src/urirun.js -c -m --comments false -o dist/urirun.min.js && cp src/urirun.js urirun.js",
+    "check": "node --check src/urirun.js"
+  },
+  "devDependencies": {
+    "terser": "^5"
+  }
+}

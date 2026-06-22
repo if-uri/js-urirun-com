@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>js.urirun.com — demo trackera zdarzeń</title>
+<style>
+  body { font: 15px/1.6 system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #1a2029; }
+  h1 { font-size: 22px; } code, pre { font-family: ui-monospace, monospace; }
+  pre { background: #0f1419; color: #e6edf3; padding: 14px; border-radius: 8px; overflow: auto; }
+  .demo { display: flex; gap: 10px; flex-wrap: wrap; margin: 24px 0; }
+  button, a.btn { padding: 10px 16px; border: 1px solid #4cc2ff; background: #4cc2ff; color: #04121c;
+                  border-radius: 8px; cursor: pointer; font: inherit; text-decoration: none; }
+  a.btn.alt { background: #fff; color: #04121c; }
+  small { color: #667; }
+</style>
+
+<!-- W produkcji wystarczy ta jedna linia w <head> obserwowanej strony: -->
+<script src="urirun.js" data-site="demo" data-endpoint="https://web.urirun.com/collect.php" defer></script>
+</head>
+<body>
+  <h1>js.urirun.com — demo</h1>
+  <p>Ta strona ma osadzony tracker. Każde kliknięcie i zdarzenie trafia jako <strong>URI</strong>
+     do <code>web.urirun.com</code>. Otwórz panel, aby zobaczyć je na żywo.</p>
+
+  <h3>Osadzenie (jedna linia w nagłówku)</h3>
+  <pre>&lt;script src="https://js.urirun.com/urirun.js"
+        data-site="moja-strona"
+        data-endpoint="https://web.urirun.com/collect.php"
+        defer&gt;&lt;/script&gt;</pre>
+
+  <h3>Wypróbuj</h3>
+  <div class="demo">
+    <button>Kliknij mnie (click)</button>
+    <button data-uri-event="checkout" data-uri-value="199.00">Kup teraz (custom event)</button>
+    <a class="btn alt" href="https://example.com" target="_blank" rel="noopener">Link wychodzący (outbound)</a>
+    <button id="manual">Ręczne urirun.track()</button>
+  </div>
+
+  <form>
+    <input name="email" placeholder="email" required>
+    <button type="submit">Zapisz (submit)</button>
+  </form>
+
+  <p><small>Otwórz konsolę sieci (Network) i filtruj po <code>collect.php</code>, aby podejrzeć wysyłane URI.</small></p>
+
+  <script>
+    document.getElementById('manual').addEventListener('click', function () {
+      window.urirun.track('demo_manual', { label: 'Ręczne zdarzenie', value: Math.round(Math.random() * 100) });
+    });
+  </script>
+</body>
+</html>
