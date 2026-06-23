@@ -233,6 +233,10 @@
         });
     }
 
+    if (options.localOnly === true) {
+      return Promise.reject(new Error('No local URI action registered: ' + uri));
+    }
+
     if (!cfg.actionEndpoint) return Promise.reject(new Error('No URI action endpoint configured'));
     log('⇢ ' + uri + ' (remote ' + mode + ')', { payload: payload, endpoint: cfg.actionEndpoint });
     return fetch(cfg.actionEndpoint, {
