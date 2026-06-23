@@ -29,6 +29,8 @@ That's it. The script self-initializes and starts sending events.
 |------------------|--------------------------------------|-------------------------------------------|
 | `data-site`      | `location.hostname`                  | Site ID shown in the panel                |
 | `data-endpoint`  | `https://web.urirun.com/collect.php` | Where events are sent                     |
+| `data-action-endpoint` | `/api/uri/invoke`              | Where URI actions are invoked with POST   |
+| `data-credentials` | `same-origin`                    | Fetch credentials for URI actions         |
 | `data-load`      | `1`                                  | Auto-track `pageview` on load             |
 | `data-clicks`    | `1`                                  | Auto-track clicks on buttons/links        |
 | `data-forms`     | `1`                                  | Auto-track form submits                   |
@@ -89,6 +91,51 @@ window.urirun.track('checkout', { label: 'Buy now', value: '199.00', plan: 'pro'
 ```
 
 Arbitrary keys (`plan` above) are forwarded and shown under **+N** in the panel.
+
+## URI actions
+
+The SDK can also invoke actions expressed as URI. This is meant for local apps
+that want AI, DevTools, or another script to call named capabilities without
+knowing the internal JavaScript function names.
+
+```html
+<script src="/assets/urirun.js"
+        data-site="phone-scanner"
+        data-endpoint="/api/uri/event"
+        data-action-endpoint="/api/uri/invoke"
+        defer></script>
+```
+
+Register local page actions:
+
+```js
+window.urirun.registerAction('scanner://page/camera/command/start', startCamera);
+window.urirun.registerAction('scanner://page/camera/command/best-pdf', bestPdf);
+window.urirun.registerAction('scanner://page/camera/query/status', () => ({ ready: !!stream }));
+```
+
+Invoke them:
+
+```js
+await window.urirun.simulate('scanner://page/camera/command/start');
+await window.urirun.invoke('scanner://page/camera/command/start');
+await window.urirun.invoke('scanner://page/camera/command/best-pdf', { count: 6 });
+```
+
+When no local handler is registered, `invoke()` POSTs to
+`data-action-endpoint` as:
+
+```json
+{"uri":"scanner://host/best/command/finish","payload":{"seriesId":"abc"}}
+```
+
+Pass `{ mode: "dry-run" }` or use `simulate()` to keep the same URI but avoid
+side effects:
+
+```js
+await window.urirun.simulate('scanner://host/best/command/finish', { seriesId: 'abc' });
+await window.urirun.invoke('scanner://host/best/command/finish', { seriesId: 'abc' }, { mode: 'execute' });
+```
 
 ## How events travel as a URI
 

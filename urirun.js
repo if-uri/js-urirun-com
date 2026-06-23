@@ -18,6 +18,8 @@
  *
  * Dodatkowo udostępnia ręczne API:
  *   window.urirun.track('checkout', { value: '199.00', label: 'Kup teraz' });
+ *   window.urirun.invoke('scanner://host/capture/command/run', { ... });
+ *   window.urirun.registerAction('scanner://page/camera/command/start', handler);
  *
  * Brak zależności, ~3 KB. Wysyłka przez navigator.sendBeacon z fallbackiem na
  * obraz 1x1 (URI), więc działa nawet przy nawigacji/zamykaniu karty.
@@ -53,6 +55,8 @@
   var cfg = {
     site:     attr('site', location.hostname),
     endpoint: attr('endpoint', 'https://web.urirun.com/collect.php'),
+    actionEndpoint: attr('action-endpoint', '/api/uri/invoke'),
+    credentials: attr('credentials', 'same-origin'),
     clicks:   attr('clicks', '1') !== '0',   // auto-track kliknięć
     load:     attr('load', '1') !== '0',     // auto-track pageview
     spa:      attr('spa', '1') !== '0',      // auto-track nawigacji SPA
@@ -132,6 +136,120 @@
   function sameSiteLink(href) {
     try { return new URL(href, location.href).hostname === location.hostname; }
     catch (e) { return true; }
+  }
+
+  // --- URI action SDK ------------------------------------------------------
+  var localActions = {};
+
+  function normalizeURI(uri) {
+    return String(uri || '').trim();
+  }
+
+  function jsonResponse(resp) {
+    return resp.text().then(function (text) {
+      var data = {};
+      if (text) {
+        try { data = JSON.parse(text); }
+        catch (e) { data = { ok: false, error: text }; }
+      }
+      if (!resp.ok || data.ok === false) {
+        var err = new Error(data.error || resp.statusText || 'URI action failed');
+        err.response = data;
+        err.status = resp.status;
+        throw err;
+      }
+      return data;
+    });
+  }
+
+  function wrapLocalResult(uri, value) {
+    if (value && typeof value === 'object' && Object.prototype.hasOwnProperty.call(value, 'ok')) {
+      if (!Object.prototype.hasOwnProperty.call(value, 'uri')) value.uri = uri;
+      return value;
+    }
+    return { ok: true, uri: uri, local: true, result: value == null ? {} : value };
+  }
+
+  function registerAction(uri, handler, meta) {
+    uri = normalizeURI(uri);
+    if (!uri) throw new Error('URI action is required');
+    if (typeof handler !== 'function') throw new Error('URI action handler must be a function');
+    localActions[uri] = { handler: handler, meta: meta || {} };
+    log('action registered', { uri: uri, meta: meta || {} });
+    return uri;
+  }
+
+  function listActions() {
+    var out = [];
+    for (var uri in localActions) {
+      if (Object.prototype.hasOwnProperty.call(localActions, uri)) {
+        out.push({ uri: uri, meta: localActions[uri].meta || {} });
+      }
+    }
+    return out.sort(function (a, b) { return a.uri < b.uri ? -1 : a.uri > b.uri ? 1 : 0; });
+  }
+
+  function modeName(options) {
+    var mode = options && (options.mode || options.runMode);
+    mode = String(mode || 'execute').toLowerCase();
+    if (mode === 'dryrun') mode = 'dry-run';
+    if (mode === 'simulate') mode = 'dry-run';
+    return mode === 'execute' ? 'execute' : 'dry-run';
+  }
+
+  function simulatedAction(uri, payload, local, mode) {
+    return {
+      ok: true,
+      uri: uri,
+      mode: mode,
+      simulated: true,
+      local: !!local,
+      action: local ? { uri: uri, meta: local.meta || {} } : null,
+      payload: payload || {}
+    };
+  }
+
+  function invoke(uri, payload, options) {
+    uri = normalizeURI(uri);
+    payload = payload || {};
+    options = options || {};
+    var mode = modeName(options);
+    if (!uri) return Promise.reject(new Error('URI action is required'));
+
+    var local = localActions[uri];
+    if (local && options.remote !== true) {
+      if (mode !== 'execute') {
+        var simulated = simulatedAction(uri, payload, local, mode);
+        log('⟳ ' + uri + ' (local dry-run)', simulated);
+        return Promise.resolve(simulated);
+      }
+      log('⇢ ' + uri + ' (local)', { payload: payload });
+      return Promise.resolve()
+        .then(function () { return local.handler(payload, { uri: uri, meta: local.meta || {}, config: cfg }); })
+        .then(function (value) {
+          var result = wrapLocalResult(uri, value);
+          log('✓ ' + uri + ' (local)', result);
+          return result;
+        });
+    }
+
+    if (!cfg.actionEndpoint) return Promise.reject(new Error('No URI action endpoint configured'));
+    log('⇢ ' + uri + ' (remote ' + mode + ')', { payload: payload, endpoint: cfg.actionEndpoint });
+    return fetch(cfg.actionEndpoint, {
+      method: 'POST',
+      credentials: cfg.credentials || 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ uri: uri, payload: payload, mode: mode })
+    }).then(jsonResponse).then(function (data) {
+      log('✓ ' + uri + ' (remote)', data);
+      return data;
+    });
+  }
+
+  function simulate(uri, payload, options) {
+    options = options || {};
+    options.mode = 'dry-run';
+    return invoke(uri, payload || {}, options);
   }
 
   log('zainicjalizowano', {
@@ -223,6 +341,16 @@
       }
       send(String(name || 'event'), payload);
     },
+    /** Wywołaj akcję URI. Najpierw próbuje lokalnego handlera strony, potem endpointu data-action-endpoint. */
+    invoke: invoke,
+    /** Alias czytelny dla aplikacji, np. urirun.action('scanner://page/...'). */
+    action: invoke,
+    /** Symuluj akcję URI bez efektów ubocznych, zachowując tę samą nazwę URI. */
+    simulate: simulate,
+    /** Zarejestruj lokalną akcję strony jako URI. */
+    registerAction: registerAction,
+    /** Lista lokalnych akcji strony, które może wywołać AI/konsola. */
+    listActions: listActions,
     config: cfg,
     /** Włącz/wyłącz logowanie do konsoli w trakcie działania. */
     debug: function (on) { cfg.debug = on !== false; return cfg.debug; }
