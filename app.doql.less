@@ -1,0 +1,19 @@
+// LESS format — define @variables here as needed
+
+app {
+  name: js-urirun-com;
+  version: 0.1.0;
+}
+
+interface[type="web"] {
+  type: spa;
+  framework: static;
+}
+
+deploy {
+  target: docker-compose;
+}
+
+environment[name="local"] {
+  runtime: docker-compose;
+}

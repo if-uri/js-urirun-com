@@ -1,0 +1,117 @@
+# code2llm | 7f 831L | shell:3,javascript:2,txt:1,json:1 | 2026-07-14
+# generated in 0.00s
+# CC̅=3.8 | critical:0/76 | dups:0 | cycles:2
+
+HEALTH[2]:
+  🔴 CYCLE Circular dependency detected: src.urirun.buildURI -> src.urirun.now -> src.urirun.send. This indicates high coupling and may lead to infinite recursion or initialization issues.
+  🔴 CYCLE Circular dependency detected: urirun.send -> urirun.buildURI -> urirun.now. This indicates high coupling and may lead to infinite recursion or initialization issues.
+
+REFACTOR[1]:
+  1. break 2 circular dependencies
+
+PIPELINES[42]:
+  [1] Src [script]: script
+      PURITY: 100% pure
+  [2] Src [attr]: attr
+      PURITY: 100% pure
+  [3] Src [debugDefault]: debugDefault
+      PURITY: 100% pure
+  [4] Src [args]: args → log
+      PURITY: 100% pure
+  [5] Src [uri]: uri → log
+      PURITY: 100% pure
+  [6] Src [img]: img → log
+      PURITY: 100% pure
+  [7] Src [closest]: closest
+      PURITY: 100% pure
+  [8] Src [jsonResponse]: jsonResponse → text
+      PURITY: 100% pure
+  [9] Src [registerAction]: registerAction → normalizeURI
+      PURITY: 100% pure
+  [10] Src [listActions]: listActions
+      PURITY: 100% pure
+  [11] Src [mode]: mode → simulatedAction
+      PURITY: 100% pure
+  [12] Src [local]: local → simulatedAction
+      PURITY: 100% pure
+  [13] Src [simulated]: simulated → log
+      PURITY: 100% pure
+  [14] Src [simulate]: simulate → invoke → normalizeURI
+      PURITY: 100% pure
+  [15] Src [el]: el → text
+      PURITY: 100% pure
+  [16] Src [type]: type → text
+      PURITY: 100% pure
+  [17] Src [href]: href → sameSiteLink
+      PURITY: 100% pure
+  [18] Src [f]: f → send → buildURI → now
+      PURITY: 100% pure
+  [19] Src [lastPath]: lastPath → send → buildURI → now
+      PURITY: 100% pure
+  [20] Src [orig]: orig → onRouteChange → send → buildURI → ...(1 more)
+      PURITY: 100% pure
+  [21] Src [ret]: ret → onRouteChange → send → buildURI → ...(1 more)
+      PURITY: 100% pure
+  [22] Src [script]: script
+      PURITY: 100% pure
+  [23] Src [attr]: attr
+      PURITY: 100% pure
+  [24] Src [debugDefault]: debugDefault
+      PURITY: 100% pure
+  [25] Src [args]: args → log
+      PURITY: 100% pure
+  [26] Src [uri]: uri → log
+      PURITY: 100% pure
+  [27] Src [img]: img → log
+      PURITY: 100% pure
+  [28] Src [closest]: closest
+      PURITY: 100% pure
+  [29] Src [jsonResponse]: jsonResponse → text
+      PURITY: 100% pure
+  [30] Src [registerAction]: registerAction → normalizeURI
+      PURITY: 100% pure
+  [31] Src [listActions]: listActions
+      PURITY: 100% pure
+  [32] Src [mode]: mode → simulatedAction
+      PURITY: 100% pure
+  [33] Src [local]: local → simulatedAction
+      PURITY: 100% pure
+  [34] Src [simulated]: simulated → log
+      PURITY: 100% pure
+  [35] Src [simulate]: simulate → invoke → normalizeURI
+      PURITY: 100% pure
+  [36] Src [el]: el → text
+      PURITY: 100% pure
+  [37] Src [type]: type → text
+      PURITY: 100% pure
+  [38] Src [href]: href → sameSiteLink
+      PURITY: 100% pure
+  [39] Src [f]: f → send → buildURI → now
+      PURITY: 100% pure
+  [40] Src [lastPath]: lastPath → send → buildURI → now
+      PURITY: 100% pure
+  [41] Src [orig]: orig → onRouteChange → send → buildURI → ...(1 more)
+      PURITY: 100% pure
+  [42] Src [ret]: ret → onRouteChange → send → buildURI → ...(1 more)
+      PURITY: 100% pure
+
+LAYERS:
+  ./                              CC̄=3.8    ←in:0  →out:0
+  │ urirun.js                  362L  0C   38m  CC=11     ←0
+  │ project.sh                  66L  0C    0m  CC=0.0    ←0
+  │ package.json                13L  0C    0m  CC=0.0    ←0
+  │ local.dev.txt                8L  0C    0m  CC=0.0    ←0
+  │ tree.sh                      4L  0C    0m  CC=0.0    ←0
+  │
+  src/                            CC̄=3.8    ←in:0  →out:0
+  │ urirun.js                  362L  0C   38m  CC=11     ←0
+  │
+  scripts/                        CC̄=0.0    ←in:0  →out:0
+  │ deploy-plesk.sh             16L  0C    0m  CC=0.0    ←0
+  │
+
+COUPLING: no cross-package imports detected
+
+EXTERNAL:
+  validation: run `vallm batch .` → validation.toon
+  duplication: run `redup scan .` → duplication.toon

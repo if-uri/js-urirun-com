@@ -1,0 +1,710 @@
+project: /home/tom/github/if-uri/js-urirun-com
+generated_from: code2llm call graph analysis
+stats:
+  total_nodes: 56
+  total_edges: 66
+  modules_count: 2
+nodes:
+  src.urirun.href:
+    name: href
+    module: src.urirun
+    line: 280
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 0
+  urirun.send:
+    name: send
+    module: urirun
+    line: 96
+    cyclomatic_complexity: 7
+    calls_out: 5
+    calls_in: 5
+  urirun.mode:
+    name: mode
+    module: urirun
+    line: 216
+    cyclomatic_complexity: 5
+    calls_out: 6
+    calls_in: 0
+  src.urirun.uri:
+    name: uri
+    module: src.urirun
+    line: 97
+    cyclomatic_complexity: 5
+    calls_out: 2
+    calls_in: 0
+  src.urirun.mode:
+    name: mode
+    module: src.urirun
+    line: 216
+    cyclomatic_complexity: 5
+    calls_out: 6
+    calls_in: 0
+  urirun.onRouteChange:
+    name: onRouteChange
+    module: urirun
+    line: 308
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 2
+  urirun.uri:
+    name: uri
+    module: urirun
+    line: 97
+    cyclomatic_complexity: 5
+    calls_out: 2
+    calls_in: 0
+  src.urirun.now:
+    name: now
+    module: src.urirun
+    line: 309
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 1
+  src.urirun.registerAction:
+    name: registerAction
+    module: src.urirun
+    line: 173
+    cyclomatic_complexity: 5
+    calls_out: 3
+    calls_in: 0
+  urirun.type:
+    name: type
+    module: urirun
+    line: 277
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.now:
+    name: now
+    module: urirun
+    line: 309
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 1
+  src.urirun.simulated:
+    name: simulated
+    module: src.urirun
+    line: 222
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+  src.urirun.simulatedAction:
+    name: simulatedAction
+    module: src.urirun
+    line: 200
+    cyclomatic_complexity: 4
+    calls_out: 0
+    calls_in: 3
+  src.urirun.normalizeURI:
+    name: normalizeURI
+    module: src.urirun
+    line: 144
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 2
+  src.urirun.local:
+    name: local
+    module: src.urirun
+    line: 219
+    cyclomatic_complexity: 5
+    calls_out: 6
+    calls_in: 0
+  urirun.el:
+    name: el
+    module: urirun
+    line: 273
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.log:
+    name: log
+    module: urirun
+    line: 70
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 9
+  src.urirun.buildURI:
+    name: buildURI
+    module: src.urirun
+    line: 78
+    cyclomatic_complexity: 6
+    calls_out: 6
+    calls_in: 1
+  src.urirun.args:
+    name: args
+    module: src.urirun
+    line: 72
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.ret:
+    name: ret
+    module: urirun
+    line: 318
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  src.urirun.send:
+    name: send
+    module: src.urirun
+    line: 96
+    cyclomatic_complexity: 7
+    calls_out: 5
+    calls_in: 5
+  urirun.f:
+    name: f
+    module: urirun
+    line: 296
+    cyclomatic_complexity: 5
+    calls_out: 2
+    calls_in: 0
+  src.urirun.jsonResponse:
+    name: jsonResponse
+    module: src.urirun
+    line: 148
+    cyclomatic_complexity: 7
+    calls_out: 4
+    calls_in: 0
+  src.urirun.type:
+    name: type
+    module: src.urirun
+    line: 277
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.sameSiteLink:
+    name: sameSiteLink
+    module: urirun
+    line: 136
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 1
+  urirun.orig:
+    name: orig
+    module: urirun
+    line: 315
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.modeName:
+    name: modeName
+    module: urirun
+    line: 192
+    cyclomatic_complexity: 7
+    calls_out: 2
+    calls_in: 1
+  src.urirun.wrapLocalResult:
+    name: wrapLocalResult
+    module: src.urirun
+    line: 165
+    cyclomatic_complexity: 6
+    calls_out: 1
+    calls_in: 3
+  src.urirun.el:
+    name: el
+    module: src.urirun
+    line: 273
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  src.urirun.modeName:
+    name: modeName
+    module: src.urirun
+    line: 192
+    cyclomatic_complexity: 7
+    calls_out: 2
+    calls_in: 1
+  urirun.wrapLocalResult:
+    name: wrapLocalResult
+    module: urirun
+    line: 165
+    cyclomatic_complexity: 6
+    calls_out: 1
+    calls_in: 3
+  urirun.text:
+    name: text
+    module: urirun
+    line: 120
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 4
+  src.urirun.f:
+    name: f
+    module: src.urirun
+    line: 296
+    cyclomatic_complexity: 5
+    calls_out: 2
+    calls_in: 0
+  src.urirun.log:
+    name: log
+    module: src.urirun
+    line: 70
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 9
+  src.urirun.onRouteChange:
+    name: onRouteChange
+    module: src.urirun
+    line: 308
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 2
+  src.urirun.img:
+    name: img
+    module: src.urirun
+    line: 109
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  src.urirun.simulate:
+    name: simulate
+    module: src.urirun
+    line: 253
+    cyclomatic_complexity: 3
+    calls_out: 1
+    calls_in: 0
+  urirun.lastPath:
+    name: lastPath
+    module: urirun
+    line: 307
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  urirun.local:
+    name: local
+    module: urirun
+    line: 219
+    cyclomatic_complexity: 5
+    calls_out: 6
+    calls_in: 0
+  urirun.invoke:
+    name: invoke
+    module: urirun
+    line: 212
+    cyclomatic_complexity: 11
+    calls_out: 12
+    calls_in: 1
+  urirun.jsonResponse:
+    name: jsonResponse
+    module: urirun
+    line: 148
+    cyclomatic_complexity: 7
+    calls_out: 4
+    calls_in: 0
+  src.urirun.text:
+    name: text
+    module: src.urirun
+    line: 120
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 4
+  src.urirun.invoke:
+    name: invoke
+    module: src.urirun
+    line: 212
+    cyclomatic_complexity: 11
+    calls_out: 12
+    calls_in: 1
+  src.urirun.orig:
+    name: orig
+    module: src.urirun
+    line: 315
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  urirun.href:
+    name: href
+    module: urirun
+    line: 280
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 0
+  src.urirun.sameSiteLink:
+    name: sameSiteLink
+    module: src.urirun
+    line: 136
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 1
+  urirun.args:
+    name: args
+    module: urirun
+    line: 72
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 0
+  src.urirun.ret:
+    name: ret
+    module: src.urirun
+    line: 318
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  urirun.simulate:
+    name: simulate
+    module: urirun
+    line: 253
+    cyclomatic_complexity: 3
+    calls_out: 1
+    calls_in: 0
+  src.urirun.lastPath:
+    name: lastPath
+    module: src.urirun
+    line: 307
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  urirun.img:
+    name: img
+    module: urirun
+    line: 109
+    cyclomatic_complexity: 2
+    calls_out: 1
+    calls_in: 0
+  urirun.buildURI:
+    name: buildURI
+    module: urirun
+    line: 78
+    cyclomatic_complexity: 6
+    calls_out: 6
+    calls_in: 1
+  urirun.registerAction:
+    name: registerAction
+    module: urirun
+    line: 173
+    cyclomatic_complexity: 5
+    calls_out: 3
+    calls_in: 0
+  urirun.simulatedAction:
+    name: simulatedAction
+    module: urirun
+    line: 200
+    cyclomatic_complexity: 4
+    calls_out: 0
+    calls_in: 3
+  urirun.normalizeURI:
+    name: normalizeURI
+    module: urirun
+    line: 144
+    cyclomatic_complexity: 2
+    calls_out: 2
+    calls_in: 2
+  urirun.simulated:
+    name: simulated
+    module: urirun
+    line: 222
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+edges:
+- caller: urirun.args
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.buildURI
+  callee: urirun.now
+  call_type: resolved
+- caller: urirun.send
+  callee: urirun.buildURI
+  call_type: resolved
+- caller: urirun.send
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.uri
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.img
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.jsonResponse
+  callee: urirun.text
+  call_type: resolved
+- caller: urirun.registerAction
+  callee: urirun.normalizeURI
+  call_type: resolved
+- caller: urirun.registerAction
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.mode
+  callee: urirun.simulatedAction
+  call_type: resolved
+- caller: urirun.mode
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.mode
+  callee: urirun.wrapLocalResult
+  call_type: resolved
+- caller: urirun.invoke
+  callee: urirun.normalizeURI
+  call_type: resolved
+- caller: urirun.invoke
+  callee: urirun.modeName
+  call_type: resolved
+- caller: urirun.invoke
+  callee: urirun.simulatedAction
+  call_type: resolved
+- caller: urirun.invoke
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.invoke
+  callee: urirun.wrapLocalResult
+  call_type: resolved
+- caller: urirun.local
+  callee: urirun.simulatedAction
+  call_type: resolved
+- caller: urirun.local
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.local
+  callee: urirun.wrapLocalResult
+  call_type: resolved
+- caller: urirun.simulated
+  callee: urirun.log
+  call_type: resolved
+- caller: urirun.simulate
+  callee: urirun.invoke
+  call_type: resolved
+- caller: urirun.el
+  callee: urirun.text
+  call_type: resolved
+- caller: urirun.type
+  callee: urirun.text
+  call_type: resolved
+- caller: urirun.href
+  callee: urirun.sameSiteLink
+  call_type: resolved
+- caller: urirun.href
+  callee: urirun.send
+  call_type: resolved
+- caller: urirun.href
+  callee: urirun.text
+  call_type: resolved
+- caller: urirun.f
+  callee: urirun.send
+  call_type: resolved
+- caller: urirun.lastPath
+  callee: urirun.send
+  call_type: resolved
+- caller: urirun.onRouteChange
+  callee: urirun.send
+  call_type: resolved
+- caller: urirun.now
+  callee: urirun.send
+  call_type: resolved
+- caller: urirun.orig
+  callee: urirun.onRouteChange
+  call_type: resolved
+- caller: urirun.ret
+  callee: urirun.onRouteChange
+  call_type: resolved
+- caller: src.urirun.args
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.buildURI
+  callee: src.urirun.now
+  call_type: resolved
+- caller: src.urirun.send
+  callee: src.urirun.buildURI
+  call_type: resolved
+- caller: src.urirun.send
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.uri
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.img
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.jsonResponse
+  callee: src.urirun.text
+  call_type: resolved
+- caller: src.urirun.registerAction
+  callee: src.urirun.normalizeURI
+  call_type: resolved
+- caller: src.urirun.registerAction
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.mode
+  callee: src.urirun.simulatedAction
+  call_type: resolved
+- caller: src.urirun.mode
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.mode
+  callee: src.urirun.wrapLocalResult
+  call_type: resolved
+- caller: src.urirun.invoke
+  callee: src.urirun.normalizeURI
+  call_type: resolved
+- caller: src.urirun.invoke
+  callee: src.urirun.modeName
+  call_type: resolved
+- caller: src.urirun.invoke
+  callee: src.urirun.simulatedAction
+  call_type: resolved
+- caller: src.urirun.invoke
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.invoke
+  callee: src.urirun.wrapLocalResult
+  call_type: resolved
+- caller: src.urirun.local
+  callee: src.urirun.simulatedAction
+  call_type: resolved
+- caller: src.urirun.local
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.local
+  callee: src.urirun.wrapLocalResult
+  call_type: resolved
+- caller: src.urirun.simulated
+  callee: src.urirun.log
+  call_type: resolved
+- caller: src.urirun.simulate
+  callee: src.urirun.invoke
+  call_type: resolved
+- caller: src.urirun.el
+  callee: src.urirun.text
+  call_type: resolved
+- caller: src.urirun.type
+  callee: src.urirun.text
+  call_type: resolved
+- caller: src.urirun.href
+  callee: src.urirun.sameSiteLink
+  call_type: resolved
+- caller: src.urirun.href
+  callee: src.urirun.send
+  call_type: resolved
+- caller: src.urirun.href
+  callee: src.urirun.text
+  call_type: resolved
+- caller: src.urirun.f
+  callee: src.urirun.send
+  call_type: resolved
+- caller: src.urirun.lastPath
+  callee: src.urirun.send
+  call_type: resolved
+- caller: src.urirun.onRouteChange
+  callee: src.urirun.send
+  call_type: resolved
+- caller: src.urirun.now
+  callee: src.urirun.send
+  call_type: resolved
+- caller: src.urirun.orig
+  callee: src.urirun.onRouteChange
+  call_type: resolved
+- caller: src.urirun.ret
+  callee: src.urirun.onRouteChange
+  call_type: resolved
+modules:
+  src.urirun:
+  - src.urirun.args
+  - src.urirun.buildURI
+  - src.urirun.el
+  - src.urirun.f
+  - src.urirun.href
+  - src.urirun.img
+  - src.urirun.invoke
+  - src.urirun.jsonResponse
+  - src.urirun.lastPath
+  - src.urirun.local
+  - src.urirun.log
+  - src.urirun.mode
+  - src.urirun.modeName
+  - src.urirun.normalizeURI
+  - src.urirun.now
+  - src.urirun.onRouteChange
+  - src.urirun.orig
+  - src.urirun.registerAction
+  - src.urirun.ret
+  - src.urirun.sameSiteLink
+  - src.urirun.send
+  - src.urirun.simulate
+  - src.urirun.simulated
+  - src.urirun.simulatedAction
+  - src.urirun.text
+  - src.urirun.type
+  - src.urirun.uri
+  - src.urirun.wrapLocalResult
+  urirun:
+  - urirun.args
+  - urirun.buildURI
+  - urirun.el
+  - urirun.f
+  - urirun.href
+  - urirun.img
+  - urirun.invoke
+  - urirun.jsonResponse
+  - urirun.lastPath
+  - urirun.local
+  - urirun.log
+  - urirun.mode
+  - urirun.modeName
+  - urirun.normalizeURI
+  - urirun.now
+  - urirun.onRouteChange
+  - urirun.orig
+  - urirun.registerAction
+  - urirun.ret
+  - urirun.sameSiteLink
+  - urirun.send
+  - urirun.simulate
+  - urirun.simulated
+  - urirun.simulatedAction
+  - urirun.text
+  - urirun.type
+  - urirun.uri
+  - urirun.wrapLocalResult
+entry_points:
+- src.urirun.args
+- src.urirun.attr
+- src.urirun.closest
+- src.urirun.debugDefault
+- src.urirun.el
+- src.urirun.err
+- src.urirun.f
+- src.urirun.href
+- src.urirun.img
+- src.urirun.jsonResponse
+- src.urirun.lastPath
+- src.urirun.listActions
+- src.urirun.local
+- src.urirun.mode
+- src.urirun.orig
+- src.urirun.registerAction
+- src.urirun.result
+- src.urirun.ret
+- src.urirun.s
+- src.urirun.script
+- src.urirun.simulate
+- src.urirun.simulated
+- src.urirun.t
+- src.urirun.type
+- src.urirun.uri
+- src.urirun.v
+- urirun.args
+- urirun.attr
+- urirun.closest
+- urirun.debugDefault
+- urirun.el
+- urirun.err
+- urirun.f
+- urirun.href
+- urirun.img
+- urirun.jsonResponse
+- urirun.lastPath
+- urirun.listActions
+- urirun.local
+- urirun.mode
+- urirun.orig
+- urirun.registerAction
+- urirun.result
+- urirun.ret
+- urirun.s
+- urirun.script
+- urirun.simulate
+- urirun.simulated
+- urirun.t
+- urirun.type
+- urirun.uri
+- urirun.v

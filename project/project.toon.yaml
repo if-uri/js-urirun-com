@@ -1,0 +1,30 @@
+# js-urirun-com | 76 func | 2f | 831L | shell | 2026-07-14
+# generated in 0.00s
+
+HEALTH:
+  CC̄=3.8  critical=2 (limit:10)  dup=0  cycles=2
+
+ALERTS[2]:
+  !   high_fan_out     invoke = 12 (limit:10)
+  !   high_fan_out     invoke = 12 (limit:10)
+
+MODULES[7] (top by size):
+  M[src/urirun.js] 362L C:0 F:38 CC↑11 D:0 (javascript)
+  M[urirun.js] 362L C:0 F:38 CC↑11 D:0 (javascript)
+  M[project.sh] 66L C:0 F:0 CC↑0 D:0 (shell)
+  M[scripts/deploy-plesk.sh] 16L C:0 F:0 CC↑0 D:0 (shell)
+  M[package.json] 13L C:0 F:0 CC↑0 D:0 (json)
+  M[local.dev.txt] 8L C:0 F:0 CC↑0 D:0 (txt)
+  M[tree.sh] 4L C:0 F:0 CC↑0 D:0 (shell)
+  LANGS: shell:3/javascript:2/txt:1/json:1
+
+HOTSPOTS[2]:
+  ★ invoke fan=12  // Orchestrates 12 calls
+  ★ invoke fan=12  // Orchestrates 12 calls
+
+REFACTOR[2]:
+  [1] M/L Break circular dependency: src.urirun.buildURI → src.urirun.now → src.urirun.send
+  [2] M/L Break circular dependency: urirun.send → urirun.buildURI → urirun.now
+
+EVOLUTION:
+  2026-07-14 CC̄=3.8 crit=2 831L // Automated analysis

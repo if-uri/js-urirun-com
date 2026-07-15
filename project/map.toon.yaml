@@ -1,0 +1,103 @@
+# js-urirun-com | 7f 831L | javascript:2,txt:1,shell:3,json:1 | 2026-07-14
+# generated in 0.00s
+# stats: 76 func | 0 cls | 7 mod | CC̄=3.8 | critical:0 | cycles:0
+# alerts[2]: fan-out invoke=12; fan-out invoke=12
+# hotspots[5]: invoke fan=12; invoke fan=12; buildURI fan=6; mode fan=6; local fan=6
+# evolution: baseline
+# Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
+M[7]:
+  local.dev.txt,8
+  package.json,13
+  project.sh,66
+  scripts/deploy-plesk.sh,16
+  src/urirun.js,362
+  tree.sh,4
+  urirun.js,362
+D:
+  urirun.js:
+    e: script,s,attr,v,debugDefault,log,args,buildURI,send,uri,img,text,t,closest,sameSiteLink,normalizeURI,jsonResponse,err,wrapLocalResult,registerAction,listActions,modeName,mode,simulatedAction,invoke,mode,local,simulated,result,simulate,el,type,href,f,lastPath,onRouteChange,now,orig,ret
+    script()
+    s()
+    attr()
+    v()
+    debugDefault()
+    log()
+    args()
+    buildURI()
+    send()
+    uri()
+    img()
+    text()
+    t()
+    closest()
+    sameSiteLink()
+    normalizeURI()
+    jsonResponse()
+    err()
+    wrapLocalResult()
+    registerAction()
+    listActions()
+    modeName()
+    mode()
+    simulatedAction()
+    invoke()
+    mode()
+    local()
+    simulated()
+    result()
+    simulate()
+    el()
+    type()
+    href()
+    f()
+    lastPath()
+    onRouteChange()
+    now()
+    orig()
+    ret()
+  src/urirun.js:
+    e: script,s,attr,v,debugDefault,log,args,buildURI,send,uri,img,text,t,closest,sameSiteLink,normalizeURI,jsonResponse,err,wrapLocalResult,registerAction,listActions,modeName,mode,simulatedAction,invoke,mode,local,simulated,result,simulate,el,type,href,f,lastPath,onRouteChange,now,orig,ret
+    script()
+    s()
+    attr()
+    v()
+    debugDefault()
+    log()
+    args()
+    buildURI()
+    send()
+    uri()
+    img()
+    text()
+    t()
+    closest()
+    sameSiteLink()
+    normalizeURI()
+    jsonResponse()
+    err()
+    wrapLocalResult()
+    registerAction()
+    listActions()
+    modeName()
+    mode()
+    simulatedAction()
+    invoke()
+    mode()
+    local()
+    simulated()
+    result()
+    simulate()
+    el()
+    type()
+    href()
+    f()
+    lastPath()
+    onRouteChange()
+    now()
+    orig()
+    ret()
+  local.dev.txt:
+  tree.sh:
+  package.json:
+  project.sh:
+  scripts/deploy-plesk.sh:

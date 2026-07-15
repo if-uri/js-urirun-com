@@ -1,0 +1,152 @@
+flowchart TD
+%% generated in 0.00s
+    subgraph src__urirun
+        src__urirun__script["script"]
+        src__urirun__s["s"]
+        src__urirun__attr["attr"]
+        src__urirun__v["v"]
+        src__urirun__debugDefault["debugDefault"]
+        src__urirun__log["log"]
+        src__urirun__args["args"]
+        src__urirun__buildURI["buildURI"]
+        src__urirun__send["send"]
+        src__urirun__uri["uri"]
+        src__urirun__img["img"]
+        src__urirun__text["text"]
+        src__urirun__t["t"]
+        src__urirun__closest["closest"]
+        src__urirun__sameSiteLink["sameSiteLink"]
+        src__urirun__normalizeURI["normalizeURI"]
+        src__urirun__jsonResponse["jsonResponse"]
+        src__urirun__err["err"]
+        src__urirun__wrapLocalResult["wrapLocalResult"]
+        src__urirun__registerAction["registerAction"]
+        src__urirun__listActions["listActions"]
+        src__urirun__modeName["modeName"]
+        src__urirun__mode["mode"]
+        src__urirun__simulatedAction["simulatedAction"]
+        src__urirun__invoke("invoke CC=11")
+        src__urirun__local["local"]
+        src__urirun__simulated["simulated"]
+        src__urirun__result["result"]
+        src__urirun__simulate["simulate"]
+        src__urirun__el["el"]
+        src__urirun__type["type"]
+        src__urirun__href["href"]
+        src__urirun__f["f"]
+        src__urirun__lastPath["lastPath"]
+        src__urirun__onRouteChange["onRouteChange"]
+        src__urirun__now["now"]
+        src__urirun__orig["orig"]
+        src__urirun__ret["ret"]
+    end
+    subgraph urirun
+        urirun__script["script"]
+        urirun__s["s"]
+        urirun__attr["attr"]
+        urirun__v["v"]
+        urirun__debugDefault["debugDefault"]
+        urirun__log["log"]
+        urirun__args["args"]
+        urirun__buildURI["buildURI"]
+        urirun__send["send"]
+        urirun__uri["uri"]
+        urirun__img["img"]
+        urirun__text["text"]
+        urirun__t["t"]
+        urirun__closest["closest"]
+        urirun__sameSiteLink["sameSiteLink"]
+        urirun__normalizeURI["normalizeURI"]
+        urirun__jsonResponse["jsonResponse"]
+        urirun__err["err"]
+        urirun__wrapLocalResult["wrapLocalResult"]
+        urirun__registerAction["registerAction"]
+        urirun__listActions["listActions"]
+        urirun__modeName["modeName"]
+        urirun__mode["mode"]
+        urirun__simulatedAction["simulatedAction"]
+        urirun__invoke("invoke CC=11")
+        urirun__local["local"]
+        urirun__simulated["simulated"]
+        urirun__result["result"]
+        urirun__simulate["simulate"]
+        urirun__el["el"]
+        urirun__type["type"]
+        urirun__href["href"]
+        urirun__f["f"]
+        urirun__lastPath["lastPath"]
+        urirun__onRouteChange["onRouteChange"]
+        urirun__now["now"]
+        urirun__orig["orig"]
+        urirun__ret["ret"]
+    end
+    urirun__args --> urirun__log
+    urirun__buildURI --> urirun__now
+    urirun__send --> urirun__buildURI
+    urirun__send --> urirun__log
+    urirun__uri --> urirun__log
+    urirun__img --> urirun__log
+    urirun__jsonResponse --> urirun__text
+    urirun__registerAction --> urirun__normalizeURI
+    urirun__registerAction --> urirun__log
+    urirun__mode --> urirun__simulatedAction
+    urirun__mode --> urirun__log
+    urirun__mode --> urirun__wrapLocalResult
+    urirun__invoke --> urirun__normalizeURI
+    urirun__invoke --> urirun__modeName
+    urirun__invoke --> urirun__simulatedAction
+    urirun__invoke --> urirun__log
+    urirun__invoke --> urirun__wrapLocalResult
+    urirun__local --> urirun__simulatedAction
+    urirun__local --> urirun__log
+    urirun__local --> urirun__wrapLocalResult
+    urirun__simulated --> urirun__log
+    urirun__simulate --> urirun__invoke
+    urirun__el --> urirun__text
+    urirun__type --> urirun__text
+    urirun__href --> urirun__sameSiteLink
+    urirun__href --> urirun__send
+    urirun__href --> urirun__text
+    urirun__f --> urirun__send
+    urirun__lastPath --> urirun__send
+    urirun__onRouteChange --> urirun__send
+    urirun__now --> urirun__send
+    urirun__orig --> urirun__onRouteChange
+    urirun__ret --> urirun__onRouteChange
+    src__urirun__args --> src__urirun__log
+    src__urirun__buildURI --> src__urirun__now
+    src__urirun__send --> src__urirun__buildURI
+    src__urirun__send --> src__urirun__log
+    src__urirun__uri --> src__urirun__log
+    src__urirun__img --> src__urirun__log
+    src__urirun__jsonResponse --> src__urirun__text
+    src__urirun__registerAction --> src__urirun__normalizeURI
+    src__urirun__registerAction --> src__urirun__log
+    src__urirun__mode --> src__urirun__simulatedAction
+    src__urirun__mode --> src__urirun__log
+    src__urirun__mode --> src__urirun__wrapLocalResult
+    src__urirun__invoke --> src__urirun__normalizeURI
+    src__urirun__invoke --> src__urirun__modeName
+    src__urirun__invoke --> src__urirun__simulatedAction
+    src__urirun__invoke --> src__urirun__log
+    src__urirun__invoke --> src__urirun__wrapLocalResult
+    src__urirun__local --> src__urirun__simulatedAction
+    src__urirun__local --> src__urirun__log
+    src__urirun__local --> src__urirun__wrapLocalResult
+    src__urirun__simulated --> src__urirun__log
+    src__urirun__simulate --> src__urirun__invoke
+    src__urirun__el --> src__urirun__text
+    src__urirun__type --> src__urirun__text
+    src__urirun__href --> src__urirun__sameSiteLink
+    src__urirun__href --> src__urirun__send
+    src__urirun__href --> src__urirun__text
+    src__urirun__f --> src__urirun__send
+    src__urirun__lastPath --> src__urirun__send
+    src__urirun__onRouteChange --> src__urirun__send
+    src__urirun__now --> src__urirun__send
+    src__urirun__orig --> src__urirun__onRouteChange
+    src__urirun__ret --> src__urirun__onRouteChange
+
+    classDef highCC fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    classDef medCC fill:#ffd43b,stroke:#f08c00,color:#000
+    class urirun__invoke,src__urirun__invoke medCC

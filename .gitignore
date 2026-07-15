@@ -2,3 +2,4 @@ node_modules/
 .DS_Store
 *.swp
 .idea/
+.code2llm_cache

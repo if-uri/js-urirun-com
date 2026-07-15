@@ -1,0 +1,122 @@
+# code2llm call graph | /home/tom/github/if-uri/js-urirun-com
+# generated in 0.02s
+# nodes: 56 | edges: 66 | modules: 2
+# CC̄=3.8
+
+HUBS[20]:
+  urirun.log
+    CC=6  in:9  out:4  total:13
+  src.urirun.log
+    CC=6  in:9  out:4  total:13
+  urirun.invoke
+    CC=11  in:1  out:12  total:13
+  src.urirun.invoke
+    CC=11  in:1  out:12  total:13
+  urirun.send
+    CC=7  in:5  out:5  total:10
+  src.urirun.send
+    CC=7  in:5  out:5  total:10
+  urirun.text
+    CC=6  in:4  out:4  total:8
+  src.urirun.text
+    CC=6  in:4  out:4  total:8
+  src.urirun.buildURI
+    CC=6  in:1  out:6  total:7
+  urirun.buildURI
+    CC=6  in:1  out:6  total:7
+  urirun.mode
+    CC=5  in:0  out:6  total:6
+  src.urirun.mode
+    CC=5  in:0  out:6  total:6
+  src.urirun.local
+    CC=5  in:0  out:6  total:6
+  urirun.local
+    CC=5  in:0  out:6  total:6
+  src.urirun.href
+    CC=6  in:0  out:4  total:4
+  src.urirun.normalizeURI
+    CC=2  in:2  out:2  total:4
+  src.urirun.jsonResponse
+    CC=7  in:0  out:4  total:4
+  src.urirun.wrapLocalResult
+    CC=6  in:3  out:1  total:4
+  urirun.wrapLocalResult
+    CC=6  in:3  out:1  total:4
+  urirun.jsonResponse
+    CC=7  in:0  out:4  total:4
+
+MODULES:
+  src.urirun  [28 funcs]
+    args  CC=2  out:2
+    buildURI  CC=6  out:6
+    el  CC=2  out:2
+    f  CC=5  out:2
+    href  CC=6  out:4
+    img  CC=2  out:1
+    invoke  CC=11  out:12
+    jsonResponse  CC=7  out:4
+    lastPath  CC=2  out:1
+    local  CC=5  out:6
+  urirun  [28 funcs]
+    args  CC=2  out:2
+    buildURI  CC=6  out:6
+    el  CC=2  out:2
+    f  CC=5  out:2
+    href  CC=6  out:4
+    img  CC=2  out:1
+    invoke  CC=11  out:12
+    jsonResponse  CC=7  out:4
+    lastPath  CC=2  out:1
+    local  CC=5  out:6
+
+EDGES:
+  urirun.args → urirun.log
+  urirun.buildURI → urirun.now
+  urirun.send → urirun.buildURI
+  urirun.send → urirun.log
+  urirun.uri → urirun.log
+  urirun.img → urirun.log
+  urirun.jsonResponse → urirun.text
+  urirun.registerAction → urirun.normalizeURI
+  urirun.registerAction → urirun.log
+  urirun.mode → urirun.simulatedAction
+  urirun.mode → urirun.log
+  urirun.mode → urirun.wrapLocalResult
+  urirun.invoke → urirun.normalizeURI
+  urirun.invoke → urirun.modeName
+  urirun.invoke → urirun.simulatedAction
+  urirun.invoke → urirun.log
+  urirun.invoke → urirun.wrapLocalResult
+  urirun.local → urirun.simulatedAction
+  urirun.local → urirun.log
+  urirun.local → urirun.wrapLocalResult
+  urirun.simulated → urirun.log
+  urirun.simulate → urirun.invoke
+  urirun.el → urirun.text
+  urirun.type → urirun.text
+  urirun.href → urirun.sameSiteLink
+  urirun.href → urirun.send
+  urirun.href → urirun.text
+  urirun.f → urirun.send
+  urirun.lastPath → urirun.send
+  urirun.onRouteChange → urirun.send
+  urirun.now → urirun.send
+  urirun.orig → urirun.onRouteChange
+  urirun.ret → urirun.onRouteChange
+  src.urirun.args → src.urirun.log
+  src.urirun.buildURI → src.urirun.now
+  src.urirun.send → src.urirun.buildURI
+  src.urirun.send → src.urirun.log
+  src.urirun.uri → src.urirun.log
+  src.urirun.img → src.urirun.log
+  src.urirun.jsonResponse → src.urirun.text
+  src.urirun.registerAction → src.urirun.normalizeURI
+  src.urirun.registerAction → src.urirun.log
+  src.urirun.mode → src.urirun.simulatedAction
+  src.urirun.mode → src.urirun.log
+  src.urirun.mode → src.urirun.wrapLocalResult
+  src.urirun.invoke → src.urirun.normalizeURI
+  src.urirun.invoke → src.urirun.modeName
+  src.urirun.invoke → src.urirun.simulatedAction
+  src.urirun.invoke → src.urirun.log
+  src.urirun.invoke → src.urirun.wrapLocalResult
