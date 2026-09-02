@@ -4,4 +4,4 @@
 - Correlation ID: `33155385219`
 - [x] Add the missing repository `Makefile`.
 - [x] Reuse the package build and JavaScript syntax-check contracts.
-- [x] Expose the fleet `verify` entry point and run all declared gates.
+- [x] Expose the fleet and OneDev `verify` entry points and run all declared gates.
